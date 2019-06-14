@@ -53,3 +53,33 @@ const edge = 5;
 const cube = new CubeMaker(edge);
 console.log(`Cube volume: ${cube.volume}`);
 console.log(`Cube surface area: ${cube.surfaceArea}`);
+
+/*EXPERIMENT*/
+console.log("***BEGIN CUBE EXPERIMENT***")
+
+let numberOfCubes = Math.floor(Math.random() * (10 - 1) + 1);
+let cubeCounter = 0;
+let cubeContainer = [];
+
+
+function cubeCreator() {
+    let cubeEdge = Math.floor(Math.random() * (20 - 5) + 5);
+    return  new CubeMaker(cubeEdge); 
+}
+
+let create = setInterval(function() {
+    
+    cubeCounter++;
+    let newCube = cubeCreator();
+    cubeContainer.push(newCube);
+    console.log(`*A new cube with a volume of ${newCube.volume} has been created`)
+
+    if(cubeCounter === numberOfCubes) {
+        clearInterval(create)
+    }
+
+}, 1000);
+
+//console.log(`${cubeContainer.length} cubes have been created!`);
+//console.log("***END CUBE EXPERIMENT***")
+
